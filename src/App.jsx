@@ -10,6 +10,7 @@ import Login from './components/Login'
 import Home from './components/Home'
 import Navigation from './components/Navigation'
 import ProtectedRoute from './components/ProtectedRoute'
+import AddPoll from './components/AddPoll'
 
 export default function App() {
   const dispatch = useDispatch()
@@ -29,6 +30,14 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/add"
+          element={
+            <ProtectedRoute>
+              <AddPoll />
             </ProtectedRoute>
           }
         />
