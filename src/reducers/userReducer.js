@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { _getUsers } from '../data/_DATA';
-import { saveQuestionAnswer } from './pollReducer';
+import { saveQuestionAnswer, addQuestion } from './pollReducer';
 
 export const fetchUsers = createAsyncThunk(
   'users/fetchUsers', async () => {
@@ -32,6 +32,17 @@ const userReducer = createSlice({
 
         state[authedUser].answers[qid] =
           answer
+      }
+    )
+
+    builder.addCase(
+      addQuestion.fulfilled,
+      (state, action) => {
+        const question = action.payload
+
+        state[question.author].questions.push(
+          question.id
+        )
       }
     )
   },

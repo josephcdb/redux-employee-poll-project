@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { _getQuestions, _saveQuestionAnswer } from '../data/_DATA';
+import { _getQuestions, _saveQuestionAnswer, _saveQuestion } from '../data/_DATA';
 
 export const fetchQuestions = createAsyncThunk(
   'polls/fetchQuestions', async () => {
@@ -20,6 +20,21 @@ export const saveQuestionAnswer = createAsyncThunk(
       qid,
       answer,
     }
+  }
+)
+
+export const addQuestion = createAsyncThunk(
+  'polls/addQuestion',
+  async ({
+    optionOneText,
+    optionTwoText,
+    author,
+  }) => {
+    return await _saveQuestion({
+      optionOneText,
+      optionTwoText,
+      author,
+    })
   }
 )
 
@@ -48,6 +63,15 @@ const pollReducer = createSlice({
         state[qid][answer].votes.push(
           authedUser
         )
+      }
+    )
+
+    builder.addCase(
+      addQuestion.fulfilled,
+      (state, action) => {
+        const question = action.payload
+
+        state[question.id] = question
       }
     )
   },
