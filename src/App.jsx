@@ -1,20 +1,21 @@
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchUsers } from './reducers/userReducer';
+import { fetchQuestions } from './reducers/pollReducer';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
-import { fetchUsers } from './reducers/userReducer'
-import { fetchQuestions } from './reducers/pollReducer'
-
-import { Routes, Route } from 'react-router-dom'
-
-import Login from './components/Login'
-import Home from './components/Home'
-import Navigation from './components/Navigation'
-import ProtectedRoute from './components/ProtectedRoute'
-import AddPoll from './components/AddPoll'
-import Leaderboard from './components/Leaderboard'
+import Login from './components/Login';
+import Home from './components/Home';
+import Navigation from './components/Navigation';
+import ProtectedRoute from './components/ProtectedRoute';
+import AddPoll from './components/AddPoll';
+import Leaderboard from './components/Leaderboard';
+import PollDetails from './components/PollDetails';
+import NotFound from './components/NotFound';
 
 export default function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(fetchUsers())
@@ -23,9 +24,12 @@ export default function App() {
 
   return (
     <>
-      <Navigation />
+      {location.pathname !== '/login' && (
+        <Navigation />
+      )}
       <Routes>
         <Route path="/login" element={<Login />} />
+
         <Route
           path="/"
           element={
@@ -34,6 +38,7 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/leaderboard"
           element={
@@ -42,6 +47,26 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/questions/:id"
+          element={
+            <ProtectedRoute>
+              <PollDetails />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/404"
+          element={<NotFound />}
+        />
+
+        <Route
+          path="*"
+          element={<NotFound />}
+        />
+
         <Route
           path="/add"
           element={
