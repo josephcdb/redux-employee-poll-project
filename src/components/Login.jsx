@@ -5,17 +5,25 @@ import { useState } from 'react';
 
 export default function Login() {
   const users = useSelector((state) => state.users);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
   const [selectedUser, setSelectedUser] = useState('');
+  const [error, setError] = useState('');
+  
   const from = location.state?.from?.pathname || '/';
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (!selectedUser) return;
+    if (!selectedUser) {
+      setError('Please select a user');
+      return;
+    }
+
+    setError('');
 
     dispatch(login(selectedUser));
     navigate(from, { replace: true });
@@ -28,7 +36,10 @@ export default function Login() {
 
       <form onSubmit={handleSubmit}>
         <select id="userlist" name="userlist" value={selectedUser}
-          onChange={(e) => setSelectedUser(e.target.value)}
+          onChange={(e) => {
+            setSelectedUser(e.target.value);
+            setError('');
+          }}
           className="border rounded-md p-2 m-2">
           <option value="">Please select user</option>
           {Object.values(users).map((user) => (
@@ -37,6 +48,11 @@ export default function Login() {
             </option>
           ))}
         </select>
+
+        {/* Error Message */}
+        {error && (
+          <p className="text-sm text-red-600">{error}</p>
+        )}
 
         <button type="submit" className="w-full bg-blue-600 text-white py-2 mt-2 rounded-md hover:bg-blue-700">
           Login
