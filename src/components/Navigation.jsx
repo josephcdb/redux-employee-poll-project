@@ -17,18 +17,21 @@ export default function Navigation() {
   }
 
   return (
-    <nav>
-      <Link to="/">Home</Link>
+    <header className="flex items-center p-4 border-b mb-6">
+      <nav className="flex items-center w-full gap-4">
+        <Link to="/" className="text-black font-bold text-xs sm:text-sm">Home</Link>
+        <Link to="/" className="text-black font-bold text-xs sm:text-sm">Leaderboard</Link>
+        <Link to="/polls" className="text-black font-bold text-xs sm:text-sm">New</Link>
+          {user && (
+            <div className="ml-auto flex items-center gap-4">
+              <span>Welcome {user.name}</span>
 
-      {user && (
-        <>
-          <span>Logged in as: {user.name}</span>
-
-          <button onClick={handleLogout}>
-            Logout
-          </button>
-        </>
-      )}
-    </nav>
+              <button onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          )}
+      </nav>
+    </header>
   )
 }
