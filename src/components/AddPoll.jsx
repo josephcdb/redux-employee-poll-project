@@ -28,21 +28,21 @@ export default function AddPoll() {
 
   return (
     <div className="max-w-xl mx-auto px-4">
-      <h1 className="text-3xl font-bold mb-2">Would You Rather</h1>
-      <p className="mb-6 text-gray-500">Create your own poll</p>
+      <h2 className="text-xl font-bold mb-2">Would You Rather Create Your Own Poll?</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <label htmlFor="optionOne">First Option</label>
+        <label className="font-bold" htmlFor="optionOne">First Option</label>
         <input type="text"
           id="optionOne"
+          name="optionOne"
           placeholder="Option One"
           value={optionOne}
           onChange={(e) => setOptionOne(e.target.value)}
           className="w-full border rounded-lg p-3"
         />
 
-        <label htmlFor="optionTwo">Second Option</label>
-        <input type="text"
+        <label className="font-bold" htmlFor="optionTwo">Second Option</label>
+        <input id="optionTwo" name="optionTwo" type="text"
           placeholder="Option Two"
           value={optionTwo}
           onChange={(e) => setOptionTwo(e.target.value)}

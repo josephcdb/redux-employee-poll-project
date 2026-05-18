@@ -23,8 +23,8 @@ export default function Home() {
 
   return (
     <div className="max-w-5xl mx-auto px-4">
-      <h1 className="text-3xl font-bold mb-6">Polls Dashboard</h1>
-      <div className="flex gap-4 mb-8">
+      <h1 className="text-2xl font-bold mb-6">Polls Dashboard</h1>
+      <div className="flex justify-center gap-4 mb-8">
         <button onClick={() => setShowAnswered(false)}
           className={`px-4 py-2 rounded
             ${showAnswered ? 'bg-gray-200' : 'bg-blue-600 text-white'}`}>
