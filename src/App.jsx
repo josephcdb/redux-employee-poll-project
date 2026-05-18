@@ -11,6 +11,7 @@ import Home from './components/Home'
 import Navigation from './components/Navigation'
 import ProtectedRoute from './components/ProtectedRoute'
 import AddPoll from './components/AddPoll'
+import Leaderboard from './components/Leaderboard'
 
 export default function App() {
   const dispatch = useDispatch()
@@ -30,6 +31,14 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/leaderboard"
+          element={
+            <ProtectedRoute>
+              <Leaderboard />
             </ProtectedRoute>
           }
         />
