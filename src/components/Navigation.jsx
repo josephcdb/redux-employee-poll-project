@@ -3,17 +3,15 @@ import { logout } from '../reducers/authReducer';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function Navigation() {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const authedUser = useSelector((state) => state.auth.authedUser)
-  const user = useSelector((state) =>
-    state.users[authedUser]
-  )
+  const authedUser = useSelector((state) => state.auth.authedUser);
+  const user = useSelector((state) => state.users[authedUser]);
 
   const handleLogout = () => {
-    dispatch(logout())
-    navigate('/login')
+    dispatch(logout());
+    navigate('/login');
   }
 
   return (
@@ -23,13 +21,10 @@ export default function Navigation() {
         <Link to="/leaderboard" className="text-black font-bold text-xs sm:text-sm">Leaderboard</Link>
         <Link to="/add" className="text-black font-bold text-xs sm:text-sm">New</Link>
           {user && (
-            <div className="ml-auto flex items-center gap-4">
-              <img src={user.avatarURL} alt={user.name} className="w-8 h-8 rounded-full object-cover"/>
+            <div className="ml-auto flex items-center gap-2">
               <span>Welcome {user.name}</span>
-
-              <button onClick={handleLogout}>
-                Logout
-              </button>
+              <img src={user.avatarURL} alt={user.name} className="w-8 h-8 rounded-full object-cover"/>
+              <button onClick={handleLogout}>Logout</button>
             </div>
           )}
       </nav>
