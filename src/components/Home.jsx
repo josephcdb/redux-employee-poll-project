@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import PollCard from './CreatePolls';
+import PollCard from './PollCard';
 
 export default function Home() {
   const [showAnswered, setShowAnswered] = useState(false)
@@ -35,22 +35,43 @@ export default function Home() {
   })
 
   return (
-    <div>
-      <h1>Polls Dashboard Page</h1>
+    <div className="max-w-5xl mx-auto px-4">
+      <h1 className="text-3xl font-bold mb-6">
+        Polls Dashboard
+      </h1>
 
-      <div>
-        <button onClick={() => setShowAnswered(false)}>
+      <div className="flex gap-4 mb-8">
+        <button
+          onClick={() => setShowAnswered(false)}
+          className={`px-4 py-2 rounded ${
+            showAnswered
+              ? 'bg-gray-200'
+              : 'bg-blue-600 text-white'
+          }`}
+        >
           Unanswered
         </button>
 
-        <button onClick={() => setShowAnswered(true)}>
+        <button
+          onClick={() => setShowAnswered(true)}
+          className={`px-4 py-2 rounded ${
+            showAnswered
+              ? 'bg-blue-600 text-white'
+              : 'bg-gray-200'
+          }`}
+        >
           Answered
         </button>
       </div>
 
-      {filteredPolls.map((poll) => (
-        <PollCard key={poll.id} poll={poll} />
-      ))}
+      <div className="space-y-4">
+        {filteredPolls.map((poll) => (
+          <PollCard
+            key={poll.id}
+            poll={poll}
+          />
+        ))}
+      </div>
     </div>
   )
 }
