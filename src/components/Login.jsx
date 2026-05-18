@@ -24,7 +24,7 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-[70vh] flex items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-[70vh] flex items-center justify-center px-4">
       <div className="w-full max-w-sm bg-white border rounded-xl shadow-sm p-6 space-y-4">
         <h2 className="text-xl font-semibold text-center">Employee Poll Login Page</h2>
 

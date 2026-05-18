@@ -24,6 +24,7 @@ export default function Navigation() {
         <Link to="/add" className="text-black font-bold text-xs sm:text-sm">New</Link>
           {user && (
             <div className="ml-auto flex items-center gap-4">
+              <img src={user.avatarURL} alt={user.name} className="w-8 h-8 rounded-full object-cover"/>
               <span>Welcome {user.name}</span>
 
               <button onClick={handleLogout}>

@@ -8,8 +8,7 @@ function PollCard({ poll }) {
         Would You Rather
       </h3>
 
-      <div className="grid grid-cols-2 gap-6">
-
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="border rounded-lg p-4 flex flex-col">
           <p className="mb-6">
             {poll.optionOne.text}

@@ -24,10 +24,12 @@ export default function Leaderboard() {
             key={user.id}
             className="border rounded-lg p-4 flex justify-between items-center"
           >
+            <img src={user.avatarURL} alt={user.name}
+              className="w-10 h-10 rounded-full object-cover"
+            />
+            <p>Asked by {user.name}</p>
             <div>
-              <h2 className="font-bold text-lg">
-                {user.name}
-              </h2>
+              <h2 className="font-bold text-lg">{user.name}</h2>
 
               <p>
                 Questions Asked:
