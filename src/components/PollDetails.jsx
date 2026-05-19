@@ -48,7 +48,7 @@ export default function PollDetails() {
   }
 
   const author = users[poll.author];
-  const userAnswer = users[authedUser].answers[id];
+  const userAnswer = users?.[authedUser]?.answers?.[id];
   const answered = !!userAnswer;
   const totalVotes = poll.optionOne.votes.length + poll.optionTwo.votes.length;
 

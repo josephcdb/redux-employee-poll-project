@@ -1,22 +1,35 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import PollCard from '../components/PollCard';
 
-it('matches snapshot', () => {
-  const poll = {
-    id: '1',
-    author: 'sarahedo',
-    timestamp: 123456789,
-    optionOne: { text: 'A' },
-    optionTwo: { text: 'B' },
-  };
+const mockPoll = {
+  id: '1',
+  author: 'sarahedo',
+  timestamp: 123456789,
+  optionOne: { text: 'A' },
+  optionTwo: { text: 'B' },
+};
 
-  const { asFragment } = render(<PollCard poll={poll} />);
-  expect(asFragment()).toMatchSnapshot();
-});
+describe('Poll Card', () => {
+  it('should match snapshot', () => {
+    const { fragment } = render(
+      <MemoryRouter>
+        <PollCard poll={mockPoll} />
+      </MemoryRouter>
+    );
+    
+    // Return snapshot test
+    expect(fragment).toMatchSnapshot();
+  });
 
-it('renders poll card correctly', () => {
-  render(<PollCard poll={mockPoll} />);
+  it('should render poll card correctly', () => {
+    render(
+      <MemoryRouter>
+        <PollCard poll={mockPoll} />
+      </MemoryRouter>
+    );
 
-  expect(screen.getByText(mockPoll.author)).toBeInTheDocument();
-  expect(screen.getByText(/show/i)).toBeInTheDocument();
+    expect(screen.getByText(mockPoll.author)).toBeInTheDocument();
+    expect(screen.getByText(/show/i)).toBeInTheDocument();
+  });
 });
