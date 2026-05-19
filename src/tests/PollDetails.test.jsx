@@ -2,10 +2,8 @@ import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
-
 import PollDetails from '../components/PollDetails';
 
-// Mock reducers (use real ones if you already have them)
 const mockPollsReducer = (state = {}) => state;
 const mockAuthReducer = (state = {}) => state;
 const mockUsersReducer = (state = {}) => state;
@@ -15,9 +13,9 @@ function createStore(preloadedState) {
     reducer: {
       polls: mockPollsReducer,
       auth: mockAuthReducer,
-      users: mockUsersReducer,
+      users: mockUsersReducer
     },
-    preloadedState,
+    preloadedState
   });
 }
 
@@ -30,26 +28,26 @@ describe('Answered Poll Details', () => {
           author: 'sarahedo',
           optionOne: {
             text: 'Option One',
-            votes: ['sarahedo', 'user2'],
+            votes: ['sarahedo', 'tylermcginnis'],
           },
           optionTwo: {
             text: 'Option Two',
-            votes: ['user3'],
-          },
-        },
+            votes: ['zoshikanlu']
+          }
+        }
       },
       auth: {
-        authedUser: 'sarahedo',
+        authedUser: 'sarahedo'
       },
       users: {
         sarahedo: {
           id: 'sarahedo',
           name: 'Sarah Edo',
           answers: {
-            testId: 'optionOne',
-          },
-        },
-      },
+            testId: 'optionOne'
+          }
+        }
+      }
     });
 
     render(
@@ -66,9 +64,9 @@ describe('Answered Poll Details', () => {
     // optionOne = 2 votes → 67%
     // optionTwo = 1 vote → 33%
     expect(screen.getByText(/2 votes \(67%\)/i)).toBeInTheDocument();
-    expect(screen.getByText(/1 votes \(33%\)/i)).toBeInTheDocument();
+    expect(screen.getByText(/1 vote \(33%\)/i)).toBeInTheDocument();
 
     // also verify "Your choice" appears
-    expect(screen.getByText(/your choice/i)).toBeInTheDocument();
+    expect(screen.getByText('Your choice')).toBeInTheDocument();
   });
 });

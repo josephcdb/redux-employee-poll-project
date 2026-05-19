@@ -11,24 +11,24 @@ function createMockStore() {
   return configureStore({
     reducer: {
       auth: authReducer,
-      users: userReducer,
+      users: userReducer
     },
     preloadedState: {
       users: {
         sarahedo: {
           id: 'sarahedo',
-          name: 'Sarah Edo',
+          name: 'Sarah Edo'
         },
         tylermcginnis: {
           id: 'tylermcginnis',
-          name: 'Tyler McGinnis',
-        },
+          name: 'Tyler McGinnis'
+        }
       },
       auth: {
         // Initial State
-        authedUser: null,
-      },
-    },
+        authedUser: null
+      }
+    }
   });
 }
 
@@ -63,9 +63,7 @@ describe('Login Page', () => {
     );
 
     // Select the option element
-    fireEvent.change(screen.getByRole('combobox'), {
-      target: { value: 'sarahedo' },
-    });
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'sarahedo' }});
 
     // Click the Login button
     fireEvent.click(screen.getByRole('button', { name: 'Login' }));

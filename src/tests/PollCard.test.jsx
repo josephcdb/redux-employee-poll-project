@@ -7,7 +7,7 @@ const mockPoll = {
   author: 'sarahedo',
   timestamp: 123456789,
   optionOne: { text: 'A' },
-  optionTwo: { text: 'B' },
+  optionTwo: { text: 'B' }
 };
 
 describe('Poll Card', () => {

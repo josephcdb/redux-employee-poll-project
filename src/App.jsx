@@ -4,14 +4,14 @@ import { fetchUsers } from './reducers/userReducer';
 import { fetchQuestions } from './reducers/pollReducer';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
-import Login from './components/Login';
 import Home from './components/Home';
+import Login from './components/Login';
 import Navigation from './components/Navigation';
-import ProtectedRoute from './components/ProtectedRoute';
 import AddPoll from './components/AddPoll';
 import Leaderboard from './components/Leaderboard';
 import PollDetails from './components/PollDetails';
 import NotFound from './components/NotFound';
+import ProtectedRoute from './components/ProtectedRoute';
 
 export default function App() {
   const dispatch = useDispatch();

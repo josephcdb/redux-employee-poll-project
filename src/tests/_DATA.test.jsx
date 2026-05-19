@@ -5,7 +5,7 @@ describe('Data', () => {
     const question = await _saveQuestion({
       optionOneText: 'React',
       optionTwoText: 'Vue',
-      author: 'sarahedo',
+      author: 'sarahedo'
     });
 
     expect(question).toHaveProperty('id');
@@ -15,9 +15,8 @@ describe('Data', () => {
   });
 
   it('should return error when incorrect data is passed to _saveQuestion', async () => {
-    await expect(
-      _saveQuestion({ optionOneText: '', optionTwoText: '' })
-    ).rejects.toBe('Please provide optionOneText, optionTwoText, and author');
+    await expect(_saveQuestion({ optionOneText: '', optionTwoText: '' }))
+      .rejects.toBe('Please provide optionOneText, optionTwoText, and author');
   });
 
   it('should return true when correct formatted answer is passed to _saveQuestionAnswer', async () => {
@@ -31,6 +30,7 @@ describe('Data', () => {
   });
 
   it('should return error when incorrect data is passed to _saveQuestionAnswer', async () => {
-    await expect(_saveQuestionAnswer({})).rejects.toBe('Please provide authedUser, qid, and answer');
+    await expect(_saveQuestionAnswer({}))
+      .rejects.toBe('Please provide authedUser, qid, and answer');
   });
 });

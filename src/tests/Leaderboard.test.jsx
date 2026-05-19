@@ -5,7 +5,7 @@ import Leaderboard from '../components/Leaderboard';
 
 const mockState = {
   auth: {
-    authedUser: 'sarahedo',
+    authedUser: 'sarahedo'
   },
   users: {
     sarahedo: {
@@ -14,16 +14,16 @@ const mockState = {
       avatarURL: '/avatar.png',
       answers: {
         q1: 'optionOne',
-        q2: 'optionTwo',
+        q2: 'optionTwo'
       },
-      questions: ['q1', 'q2'],
-    },
-  },
+      questions: ['q1', 'q2']
+    }
+  }
 };
 
 function createMockStore(state = mockState) {
   return configureStore({
-    reducer: (store = state) => store,
+    reducer: (store = state) => store
   });
 }
 
@@ -37,6 +37,7 @@ describe('Leaderboard', () => {
       </Provider>
     );
 
-    expect(screen.getByText(/sarahedo/i)).toBeInTheDocument();
+    // Should return true if sarahedo exists in the leaderboard
+    expect(screen.getByText('sarahedo')).toBeInTheDocument();
   });
 });
