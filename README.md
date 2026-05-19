@@ -17,7 +17,7 @@ Using the provided starter code, you'll build a React/Redux front end for the ap
 ## Features (Information)
 1. When you are on Login Page trying to click Login button without selecting any users, it will display an error message.
 2. When you are on Homepage, you will see New Questions and Answered (Done) section.
-3. If you click any "Show" within New Questions, you will be redirected to questions/id and you may vote if you like
+3. If you click any "Show" within New Questions, you will be redirected to questions/question_id and you may vote if you like
 4. Once you voted it, you will be redirected to view the Poll Details Page that has the number of votes and percentage. It will be updated on Leaderboard too.
 5. If you click New, you are welcome to create new poll and submit it. Once it is submitted, it will be added on New Questions section of Homepage.
 
