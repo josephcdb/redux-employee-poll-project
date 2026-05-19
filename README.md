@@ -9,10 +9,10 @@ Using the provided starter code, you'll build a React/Redux front end for the ap
 ## Instructions
 
 1. Clone the repository
-2. cd employee_polls_app
-3. Run npm install to install all project dependencies
-4. Run npm run dev --> to display the web app
-5. Run npm test --> to execute all of the test cases
+2. cd `employee_polls_app`
+3. Run `npm install` to install all project dependencies
+4. Run `npm run dev` OR `npm start` --> to display the web app
+5. Run `npm test` --> to execute all of the test cases
 
 ## Features (Information)
 1. When you are on Login Page trying to click Login button without selecting any users, it will display an error message.
