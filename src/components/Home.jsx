@@ -40,7 +40,7 @@ export default function Home() {
 
       {/* Done */}
       <section className="border rounded-xl p-5 bg-white">
-        <h1 className="text-xl font-bold border-b pb-3 mb-4">Done</h1>
+        <h1 className="text-xl font-bold border-b pb-3 mb-4">Answered (Done)</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {answeredPolls.map((poll) => (
             <PollCard key={poll.id} poll={poll} />
